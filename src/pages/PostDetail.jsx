@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
+import GlobalContext from "../context/GlobalContext";
 
 export default function PostDetail() {
   const { title } = useParams();
   const [post, setPost] = useState(null);
+  const { api_url } = useContext(GlobalContext);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/posts/${encodeURIComponent(title)}`)
+    fetch(`${api_url}/posts/${encodeURIComponent(title)}`)
       .then((resp) => resp.json())
       .then((response) => {
         setPost(response.data);
@@ -14,7 +16,7 @@ export default function PostDetail() {
       .catch(error => {
         console.error("Error fetching post:", error);
       });
-  }, [title]);
+  }, [title, api_url]);
 
   if (!post) {
     return <div className="container mt-5">Caricamento...</div>;

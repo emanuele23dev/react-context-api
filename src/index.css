@@ -65,14 +65,13 @@ main {
 }
 
 .container-form {
-  width: 50%;
+  width: 60%;
   margin: auto;
 }
 
-.container-accordion {
-  width: 50%;
+.list-group-item {
+  width: 60%;
   margin: auto;
-  color: rgb(87, 87, 87);
 }
 
 .trash-icon {
